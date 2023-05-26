@@ -68,6 +68,28 @@ sudo git clone https://github.com/Gqyanxin/ambari-hue-service.git /var/lib/ambar
 
    第40行 ambari_server_hostname 改成你自己的地址
 
+3. 修改ignore_groupsusers_create的值
+   使用命令行配置的模式进行查询和修改,注意地址需直接使用ip，否则可能访问不到
+   
+   ```
+   # cd /var/lib/ambari-server/resources/scripts
+   # python configs.py -u admin -p admin -n $cluster_name -l $ambari_server -t 8080 -a get -c cluster-env |grep -i ignore_groupsusers_create
+   "ignore_groupsusers_create": "false",
+   # python configs.py -u admin -p admin -n $cluster_name -l $ambari_server -t 8080 -a set -c cluster-env -k ignore_groupsusers_create -v true
+   ```
+   $cluster_name $ambari_server 替换成真实值
+   
+4. 安装simplyjson
+   需要先离线安装setuptools和pip，然后用pip install simplyjson安装
+   修改metainfo.xml文件，将simplejson这一类安装失败的文件单独手动安装之后，从xml里面去掉，主要都是python-xxx之类的包，部分包手动安装的时候要选择合适的版本，否则有可能安装失败。
+   <img width="565" alt="image" src="https://github.com/bluesky4485/ambari-hue-service/assets/442591/b1e1af8d-5d25-48cd-9bb3-962e84367c3f">
+
+5. 修改sudo.py文件，解决编码问题
+ vim /usr/lib/ambari-agent/lib/resource_management/core/sudo.py
+<img width="367" alt="image" src="https://github.com/bluesky4485/ambari-hue-service/assets/442591/ecfb17f1-aef9-42cc-9f19-c0d18bfc1d21">
+
+
+
 ## 部署安装
 
 重启ambari
