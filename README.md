@@ -17,6 +17,7 @@ yum install sqlite-devel  libxslt-devel.x86_64 python-devel openldap-devel ascii
 2.所有机器上创建用户和组
 
 ```shell
+groupadd hue
 useradd -g hue hue
 ```
 
