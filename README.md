@@ -14,6 +14,10 @@ HUE：4.11.0
 yum install sqlite-devel  libxslt-devel.x86_64 python-devel openldap-devel asciidoc cyrus-sasl-gssapi  libxml2-devel.x86_64 mysql-devel gcc gcc-c++ kernel-devel openssl-devel gmp-devel libffi-devel install npm
 ```
 
+安装epel源：
+wget -O /etc/yum.repos.d/epel.repo https://mirrors.aliyun.com/repo/epel-7.repo
+
+
 2.所有机器上创建用户和组
 
 ```shell
