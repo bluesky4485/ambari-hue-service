@@ -92,6 +92,27 @@ sudo git clone https://github.com/Gqyanxin/ambari-hue-service.git /var/lib/ambar
  vim /usr/lib/ambari-agent/lib/resource_management/core/sudo.py
 <img width="367" alt="image" src="https://github.com/bluesky4485/ambari-hue-service/assets/442591/ecfb17f1-aef9-42cc-9f19-c0d18bfc1d21">
 
+6. 安装nodejs，建议版本v16，同时更新npm的版本
+
+```
+curl -fsSL https://rpm.nodesource.com/setup_16.x | bash -
+npm config set registry https://registry.npmmirror.com
+npm install -g npm
+```
+
+7. 修改npm和pipy的源，建议都修改为阿里云的国内源
+
+```
+~/.pip/pip.conf
+```
+
+```
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.aliyun.com
+```
 
 
 ## 部署安装
